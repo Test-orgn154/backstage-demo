@@ -1,0 +1,35 @@
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: eshop-admin
+  description: The eShop admin group is responsible for all eShop systems.
+spec:
+  type: team
+  children: []
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: eshop-web
+  description: The eShop web system contains all services related to the eShop web application.
+spec:
+  owner: eshop-admin
+  domain: eshop
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: eshop-ordering
+  description: The eShop ordering system contains all services related to ordering.
+spec:
+  owner: eshop-admin
+  domain: eshop
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: eshop-messaging
+  description: The eShop messaging system contains all services related to messaging.
+spec:
+  owner: eshop-admin
+  domain: messaging

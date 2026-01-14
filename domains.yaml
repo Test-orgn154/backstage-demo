@@ -1,0 +1,15 @@
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: eshop
+  description: The eShop domain contains all systems related to the eShop application.
+spec:
+  owner: guests
+---
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: messaging
+  description: The messaging domain contains all systems related to messaging.
+spec:
+  owner: guests

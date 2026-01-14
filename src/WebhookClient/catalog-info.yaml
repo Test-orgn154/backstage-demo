@@ -1,0 +1,17 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: webhook-client
+  description: A client for webhooks.
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+spec:
+  type: service
+  owner: eshop-admin
+  lifecycle: experimental
+  system: eshop-messaging
+  domain: messaging
+  consumesApis:
+    - webhooks-api
+  dependsOn:
+    - component:webhooks-api
