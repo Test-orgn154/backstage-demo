@@ -32,4 +32,4 @@ spec:
   system: eshop-ordering
   domain: eshop
   definition:
-    $text: file:./swagger.json
+    $text: url:./swagger.json

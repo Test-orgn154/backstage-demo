@@ -28,4 +28,4 @@ spec:
   system: eshop-messaging
   domain: messaging
   definition:
-    $text: file:./swagger.json
+    $text: url:./swagger.json

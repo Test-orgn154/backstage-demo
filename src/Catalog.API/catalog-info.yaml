@@ -30,4 +30,4 @@ spec:
   system: eshop-web
   domain: eshop
   definition:
-    $text: file:./Catalog.API_v2.json
+    $text: url:./Catalog.API_v2.json

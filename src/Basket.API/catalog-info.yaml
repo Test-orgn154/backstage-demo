@@ -31,4 +31,4 @@ spec:
   system: eshop-web
   domain: eshop
   definition:
-    $text: file:./swagger.json
+    $text: url:./swagger.json
