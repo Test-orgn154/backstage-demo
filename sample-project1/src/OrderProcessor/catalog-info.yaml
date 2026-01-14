@@ -1,0 +1,16 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: order-processor
+  description: The Order Processor is a background service that processes orders.
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+spec:
+  type: service
+  owner: eshop-admin
+  lifecycle: experimental
+  system: eshop-ordering
+  domain: eshop
+  dependsOn:
+    - resource:eventbus
+    - component:ordering-api
