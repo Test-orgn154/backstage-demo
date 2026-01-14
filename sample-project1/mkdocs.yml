@@ -1,5 +1,0 @@
-site_name: Sample Service Documentation
-nav:
-  - Home: index.md
-plugins:
-  - techdocs-core
