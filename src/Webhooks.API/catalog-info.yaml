@@ -28,4 +28,4 @@ spec:
   system: eshop-messaging
   domain: messaging
   definition:
-    $text: url:./swagger.json
+    $text: https://raw.githubusercontent.com/Test-orgn154/backstage-demo/main/src/Webhooks.API/swagger.json

@@ -32,4 +32,4 @@ spec:
   system: eshop-ordering
   domain: eshop
   definition:
-    $text: url:./swagger.json
+    $text: https://raw.githubusercontent.com/Test-orgn154/backstage-demo/main/src/Ordering.API/swagger.json

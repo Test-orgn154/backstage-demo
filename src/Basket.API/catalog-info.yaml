@@ -31,4 +31,4 @@ spec:
   system: eshop-web
   domain: eshop
   definition:
-    $text: url:./swagger.json
+    $text: https://raw.githubusercontent.com/Test-orgn154/backstage-demo/main/src/Basket.API/swagger.json
