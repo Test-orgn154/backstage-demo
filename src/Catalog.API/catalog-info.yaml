@@ -5,6 +5,7 @@ metadata:
   description: The Catalog API is a microservice that provides product catalog information.
   annotations:
     backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: 'Test-orgn154/backstage-demo'
 spec:
   type: service
   owner: default/rocket-team

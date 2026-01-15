@@ -5,6 +5,7 @@ metadata:
   description: The Identity API is a microservice that handles user authentication and identity.
   annotations:
     backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: 'Test-orgn154/backstage-demo'
 spec:
   type: service
   owner: default/rocket-team

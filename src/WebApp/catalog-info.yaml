@@ -5,6 +5,7 @@ metadata:
   description: The main web application for the eShop.
   annotations:
     backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: 'Test-orgn154/backstage-demo'
 spec:
   type: website
   owner: default/rocket-team
