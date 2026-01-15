@@ -1,0 +1,27 @@
+name: Basket.API CI
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'src/Basket.API/**'
+  pull_request:
+    branches: [ "main" ]
+    paths:
+      - 'src/Basket.API/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.0.x' # Specify your .NET version here
+
+    - name: Build Basket.API
+      run: dotnet build src/Basket.API/Basket.API.csproj --configuration Release
