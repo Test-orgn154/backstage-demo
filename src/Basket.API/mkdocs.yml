@@ -1,0 +1,6 @@
+site_name: 'Basket API Documentation'
+nav:
+  - Home: index.md
+  - API Reference: api-reference.md
+  - Tutorials:
+    - 'Getting Started': tutorials/getting-started.md
