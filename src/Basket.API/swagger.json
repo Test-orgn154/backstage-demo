@@ -2,7 +2,65 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Basket API",
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "description": "A simple API to manage shopping baskets."
   },
-  "paths": {}
+  "paths": {
+    "/api/v1/basket/{id}": {
+      "get": {
+        "summary": "Get basket by user id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The user's basket."
+          }
+        }
+      },
+      "post": {
+        "summary": "Update a user's basket.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The updated basket."
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a user's basket.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Basket deleted."
+          }
+        }
+      }
+    }
+  }
 }

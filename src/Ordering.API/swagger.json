@@ -2,7 +2,49 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Ordering API",
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "description": "A simple API to manage orders."
   },
-  "paths": {}
+  "paths": {
+    "/api/v1/orders": {
+      "get": {
+        "summary": "Get orders for a user",
+        "responses": {
+          "200": {
+            "description": "A list of orders."
+          }
+        }
+      }
+    },
+    "/api/v1/orders/{id}": {
+      "get": {
+        "summary": "Get order by id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A single order."
+          }
+        }
+      }
+    },
+    "/api/v1/orders/new": {
+      "post": {
+        "summary": "Create a new order",
+        "responses": {
+          "201": {
+            "description": "Order created."
+          }
+        }
+      }
+    }
+  }
 }

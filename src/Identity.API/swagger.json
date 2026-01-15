@@ -2,7 +2,50 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Identity API",
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "description": "A simple API to manage user identity."
   },
-  "paths": {}
+  "paths": {
+    "/api/v1/identity/login": {
+      "post": {
+        "summary": "User login",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Login successful, returns JWT token."
+          },
+          "401": {
+            "description": "Unauthorized."
+          }
+        }
+      }
+    },
+    "/api/v1/identity/logout": {
+      "post": {
+        "summary": "User logout",
+        "responses": {
+          "200": {
+            "description": "Logout successful."
+          }
+        }
+      }
+    }
+  }
 }

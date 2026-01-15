@@ -2,7 +2,65 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Webhooks API",
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "description": "A simple API to manage webhooks."
   },
-  "paths": {}
+  "paths": {
+    "/api/v1/webhooks": {
+      "get": {
+        "summary": "List webhooks",
+        "responses": {
+          "200": {
+            "description": "A list of webhooks."
+          }
+        }
+      },
+      "post": {
+        "summary": "Register a new webhook",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "url": {
+                    "type": "string"
+                  },
+                  "event": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Webhook registered."
+          }
+        }
+      }
+    },
+    "/api/v1/webhooks/{id}": {
+      "delete": {
+        "summary": "Delete a webhook",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Webhook deleted."
+          }
+        }
+      }
+    }
+  }
 }
