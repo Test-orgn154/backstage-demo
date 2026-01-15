@@ -3,7 +3,7 @@
   "info": {
     "title": "Basket API",
     "version": "1.0.0",
-    "description": "A simple API to manage shopping baskets."
+    "description": "A simple API to manage all shopping baskets."
   },
   "paths": {
     "/api/v1/basket/{id}": {
