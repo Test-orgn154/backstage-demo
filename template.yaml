@@ -27,7 +27,7 @@ spec:
         groupId:
           title: Maven groupId
           type: string
-          description: Maven groupId (e.g. com.example.services)
+          description: Maven groupId (e.g., com.example.services)
         domainName:
           title: Domain name
           type: string
@@ -57,7 +57,7 @@ spec:
       name: Fetch Spring Boot skeleton
       action: fetch:template
       input:
-        url: https://github.com/piomin/backstage-templates/tree/master/templates/spring-boot-basic/skeleton
+        url: https://raw.githubusercontent.com/piomin/backstage-templates/master/templates/spring-boot-basic/skeleton
         values:
           appName: ${{ parameters.appName }}
           groupId: ${{ parameters.groupId }}
