@@ -57,8 +57,7 @@ spec:
       name: Fetch Spring Boot skeleton
       action: fetch:template
       input:
-        url: https://github.com/piomin/backstage-templates
-        path: templates/spring-boot-basic/skeleton
+        url: github:piomin/backstage-templates/templates/spring-boot-basic/skeleton
         values:
           appName: ${{ parameters.appName }}
           groupId: ${{ parameters.groupId }}
