@@ -1,0 +1,87 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: spring-boot-basic
+  title: Spring Boot Basic Service
+  description: Create a basic Spring Boot application
+  tags:
+    - java
+    - spring
+    - backend
+spec:
+  owner: Test-orgn154
+  type: service
+
+  parameters:
+    - title: Project Information
+      required:
+        - appName
+        - groupId
+        - domainName
+      properties:
+        appName:
+          title: Application name
+          type: string
+          description: Name of the Spring Boot application
+        groupId:
+          title: Maven groupId
+          type: string
+          description: Maven groupId (e.g. com.example.services)
+        domainName:
+          title: Domain name
+          type: string
+          description: Business domain name
+        apiPath:
+          title: API base path
+          type: string
+          default: /api/v1
+
+    - title: Repository Location
+      required:
+        - repoUrl
+      properties:
+        repoUrl:
+          title: GitHub Repository
+          type: string
+          ui:field: RepoUrlPicker
+          ui:options:
+            allowedHosts:
+              - github.com
+
+  steps:
+    - id: fetch-base
+      name: Fetch Spring Boot skeleton
+      action: fetch:template
+      input:
+        repoUrl: github.com?owner=piomin&repo=backstage-templates
+        path: templates/spring-boot-basic/skeleton
+        values:
+          appName: ${{ parameters.appName }}
+          groupId: ${{ parameters.groupId }}
+          domainName: ${{ parameters.domainName }}
+          apiPath: ${{ parameters.apiPath }}
+          javaPackage: ${{ parameters.groupId | replace('.', '/') }}
+
+    - id: publish
+      name: Publish to GitHub repo
+      action: publish:github
+      input:
+        repoUrl: ${{ parameters.repoUrl }}
+        description: Spring Boot service ${{ parameters.appName }}
+        defaultBranch: main
+        visibility: private
+
+    - id: register
+      name: Register in Backstage Catalog
+      action: catalog:register
+      input:
+        repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
+        catalogInfoPath: /catalog-info.yaml
+
+  output:
+    links:
+      - title: Repository
+        url: ${{ steps.publish.output.remoteUrl }}
+      - title: Open in catalog
+        icon: catalog
+        entityRef: ${{ steps.register.output.entityRef }}
