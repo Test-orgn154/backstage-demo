@@ -1,3 +1,4 @@
+
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
@@ -15,28 +16,44 @@ spec:
 
   parameters:
     - title: Project Information
-      required: [appName, groupId, domainName]
+      required:
+        - appName
+        - groupId
+        - domainName
       properties:
         appName:
+          title: Application name
           type: string
+          description: Name of the Spring Boot application
         groupId:
+          title: Maven groupId
           type: string
+          description: Maven groupId (e.g. com.example.services)
         domainName:
+          title: Domain name
           type: string
+          description: Business domain name
         apiPath:
+          title: API base path
           type: string
           default: /api/v1
 
     - title: Repository Location
-      required: [repoUrl]
+      required:
+        - repoUrl
       properties:
         repoUrl:
+          title: GitHub Repository
           type: string
           ui:field: RepoUrlPicker
           ui:options:
-            allowedHosts: [github.com]
+            allowedHosts:
+              - github.com
 
   steps:
+    # ----------------------------------------------
+    # Step 1: Fetch remote Spring Boot skeleton
+    # ----------------------------------------------
     - id: fetch-base
       name: Fetch Spring Boot skeleton
       action: fetch:template
@@ -49,6 +66,28 @@ spec:
           apiPath: ${{ parameters.apiPath }}
           javaPackage: ${{ parameters.groupId | replace('.', '/') }}
 
+    # ----------------------------------------------
+    # Step 2: Generate catalog-info.yaml
+    # ----------------------------------------------
+    - id: write-catalog-info
+      name: Generate catalog-info.yaml
+      action: roadiehq:utils:fs:write
+      input:
+        path: ./catalog-info.yaml
+        content: |
+          apiVersion: backstage.io/v1alpha1
+          kind: Component
+          metadata:
+            name: ${{ parameters.appName }}
+            description: Spring Boot service scaffolded from template
+          spec:
+            type: service
+            lifecycle: experimental
+            owner: ${{ parameters.groupId }}
+
+    # ----------------------------------------------
+    # Step 3: Publish to GitHub
+    # ----------------------------------------------
     - id: publish
       name: Publish to GitHub repo
       action: publish:github
@@ -56,7 +95,11 @@ spec:
         repoUrl: ${{ parameters.repoUrl }}
         description: Spring Boot service ${{ parameters.appName }}
         defaultBranch: main
+        visibility: private
 
+    # ----------------------------------------------
+    # Step 4: Register component in Backstage Catalog
+    # ----------------------------------------------
     - id: register
       name: Register in Backstage Catalog
       action: catalog:register
