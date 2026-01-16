@@ -8,6 +8,7 @@ metadata:
     - java
     - spring
     - backend
+
 spec:
   owner: Test-orgn154
   type: service
@@ -53,8 +54,7 @@ spec:
       name: Fetch Spring Boot skeleton
       action: fetch:template
       input:
-        repoUrl: github.com?owner=piomin&repo=backstage-templates
-        path: templates/spring-boot-basic/skeleton
+        url: https://github.com/piomin/backstage-templates/tree/master/templates/spring-boot-basic/skeleton
         values:
           appName: ${{ parameters.appName }}
           groupId: ${{ parameters.groupId }}
